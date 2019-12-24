@@ -6,8 +6,13 @@
     <link rel="stylesheet" type="text/css" href="stylesheet.css">
   </head>
   <body>
-    <h1>Cisco Device List</h1>
-    <div id='wrapper'></div>
+    <h1 style="text-align:center;">Cisco Device List</h1>
+    <div id='wrapper'>
+      <div id='routers'><h1>Routers</h1></div>
+      <div id='switches'><h1>Switches and Hubs</h1></div>
+      <div id='wireless'><h1>Wireless Controllers</h1></div>
+      <div id='ap'><h1>Access Points</h1></div>
+    </div>
   </body>
   <script type="text/javascript">
     function readTextFile(file, callback) {
@@ -25,6 +30,7 @@
       var data = JSON.parse(text);
       for (var i = 0; i < data.length; i++) {
         var j = JSON.parse(data[i])
+        console.log(j);
         var d = document.createElement('div')
         d.id = 'child-wrapper'
         Object.keys(j).map(function(key, index) {
@@ -32,7 +38,18 @@
           p.innerText = `${key}: ${j[key]}`
           d.appendChild(p)
         })
-        document.getElementById('wrapper').appendChild(d)
+        if(j.Family == 'Routers'){
+          document.getElementById('routers').appendChild(d)
+        }
+        else if(j.Family == 'Switches and Hubs'){
+          document.getElementById('switches').appendChild(d)
+        }
+        else if(j.Family == 'Wireless Controller'){
+          document.getElementById('wireless').appendChild(d)
+        }
+        else if(j.Family == 'Unified AP'){
+          document.getElementById('ap').appendChild(d)
+        }
       }
     })
   </script>

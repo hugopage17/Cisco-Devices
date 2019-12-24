@@ -8,10 +8,10 @@ class Server:
         json_data = []
         for d in devices:
             x = {
-                "type":d['type'],
-                "family":d['family'],
-                "managementIpAddress":d['managementIpAddress'],
-                "macAddress":d['macAddress'],
+                "Type":d['type'],
+                "Family":d['family'],
+                "IP Address":d['managementIpAddress'],
+                "MAC Address":d['macAddress'],
                 "Serial Number":d['serialNumber'],
                 "Uptime":d['upTime']
             }

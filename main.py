@@ -6,7 +6,6 @@ import click
 fetch = Fetch()
 data = fetch.get_device_list()
 
-
 @click.group()
 def cli():
     pass

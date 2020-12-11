@@ -1,0 +1,7 @@
+click
+requests
+tabulate
+socketserver
+http
+webbrowser
+json

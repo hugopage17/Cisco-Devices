@@ -1,5 +1,6 @@
 import requests
 import json
+requests.packages.urllib3.disable_warnings()
 
 class Fetch:
     def __init__(self):
@@ -10,13 +11,13 @@ class Fetch:
           'Accept': 'application/json'
         }
         try:
-            response = requests.request("POST", url, headers=headers, data=payload)
+            response = requests.request("POST", url, headers=headers, data=payload, verify=False)
             j = json.loads(response.text)
             token = j['response']['serviceTicket']
             self.token = token
             print('Token:',token)
-        except:
-            print('Failed to retrieve token')
+        except Exception as e:
+            print(e)
 
     def get_device_list(self):
         print('Accessing device list')
@@ -26,6 +27,6 @@ class Fetch:
           'Accept': 'application/json',
           'x-auth-token': self.token
         }
-        response = requests.request("GET", url, headers=headers)
+        response = requests.request("GET", url, headers=headers, verify=False)
         j = json.loads(response.text)
         return j['response']

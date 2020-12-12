@@ -27,6 +27,6 @@ class Fetch:
           'Accept': 'application/json',
           'x-auth-token': self.token
         }
-        response = requests.request("GET", url, headers=headers, verify=False)
+        response = requests.request("GET", url, headers=headers)
         j = json.loads(response.text)
         return j['response']

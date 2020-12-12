@@ -11,7 +11,7 @@ class Fetch:
           'Accept': 'application/json'
         }
         try:
-            response = requests.request("POST", url, headers=headers, data=payload, verify=False)
+            response = requests.request("POST", url, headers=headers, data=payload)
             j = json.loads(response.text)
             token = j['response']['serviceTicket']
             self.token = token
